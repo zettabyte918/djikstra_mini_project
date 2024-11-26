@@ -1,7 +1,8 @@
 import heapq
 import folium
 from geopy.distance import geodesic
-
+import webbrowser
+import os
 
 def build_graph(locations, connections):
     """Build a graph using only defined connections."""
@@ -69,6 +70,11 @@ def visualize_path(locations, path):
     # Save the map as an HTML file
     map.save("shortest_path.html")
     print("Map saved as 'shortest_path.html'. Open it in your browser to view the path.")
+    file_path = 'shortest_path.html'
+    file_path = os.path.abspath(file_path)
+    chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'  # Change this to the correct path
+    webbrowser.get(chrome_path).open(f'file://{file_path}')
+
 
 
 def main():
