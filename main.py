@@ -81,10 +81,10 @@ def main():
         'Kairouan': (35.6772, 10.1008),
         'Métouia': (33.9667, 10.0000),
         'Kebili': (33.7050, 8.9650),
+        'Jendouba': (36.5072, 8.7757),
         'Sukrah': (36.8833, 10.2500),
         'Gabès': (33.8833, 10.1167),
         'Ariana': (36.8625, 10.1956),
-        'Sakiet ed Daier': (34.8000, 10.7800),
         'Gafsa': (34.4225, 8.7842),
         'Msaken': (35.7333, 10.5833),
         'Medenine': (33.3547, 10.5053),
@@ -100,6 +100,7 @@ def main():
         'Zarzis': (33.5000, 11.1167),
         'Ben Gardane': (33.1389, 11.2167),
         'Mahdia': (35.5000, 11.0667),
+        'Bizerte': (37.2768, 9.8642),
         'Houmt Souk': (33.8667, 10.8500),
         'Fouchana': (36.7000, 10.1667),
         'Le Kram': (36.8333, 10.3167),
@@ -110,31 +111,32 @@ def main():
         'Djemmal': (35.6400, 10.7600),
         'Korba': (36.5667, 10.8667),
         'Menzel Temime': (36.7833, 10.9833),
+        'Mat': (36.7833, 10.9833),
         'Ghardimaou': (36.4500, 8.4333),
         'Midoun': (33.8000, 11.0000),
         'Menzel Bourguiba': (37.1500, 9.7833),
-        'Manouba': (36.8078, 10.1011)
+        'Manouba': (36.8078, 10.1011),
+        'Matmata': (33.4552, 9.7679)
+        
     }
 
-    # Define connections (simulate road network with more cities)
     connections = {
-        'Tunis': ['Ariana', 'La Marsa', 'Ben Arous', 'Radès'],
-        'Sidi Bouzid': ['Kasserine', 'Gafsa', 'Sakiet ed Daier', 'Kairouan'],
-        'Sfax': ['Sousse', 'Gabès', 'Mahdia', 'Medenine'],
-        'Sousse': ['Sfax', 'Mahdia', 'Monastir', 'Msaken'],
-        'Kairouan': ['Sidi Bouzid', 'Kasserine', 'Tunis', 'Sakiet ed Daier'],
-        'Métouia': ['Kebili', 'Sakiet ed Daier', 'Gafsa', 'Medenine'],
+        'Tunis': ['Ariana', 'Sukrah', 'Hammamet', 'Nabeul', 'Radès', 'La Marsa'],
+        'Sidi Bouzid': ['Kasserine', 'Gafsa', 'Kairouan'],
+        'Sfax': ['Mahdia', 'Gabès', 'Medenine'],
+        'Sousse': ['Mahdia', 'Monastir', 'Msaken'],
+        'Kairouan': ['Sidi Bouzid', 'Kasserine', 'Tunis'],
+        'Métouia': ['Kebili', 'Gafsa', 'Medenine'],
         'Kebili': ['Métouia', 'Gafsa', 'Medenine', 'Gabès'],
         'Sukrah': ['Tunis', 'Ariana', 'Radès', 'La Marsa'],
         'Gabès': ['Sfax', 'Kebili', 'Medenine', 'Tataouine'],
         'Ariana': ['Tunis', 'Sukrah', 'La Marsa', 'Ben Arous'],
-        'Sakiet ed Daier': ['Kairouan', 'Sidi Bouzid', 'Gafsa', 'Medenine'],
-        'Gafsa': ['Sidi Bouzid', 'Kasserine', 'Métouia', 'Sakiet ed Daier'],
+        'Gafsa': ['Sidi Bouzid', 'Kasserine', 'Métouia'],
         'Msaken': ['Sousse', 'Monastir', 'Mahdia', 'Djemmal'],
         'Medenine': ['Sfax', 'Kebili', 'Gabès', 'Tataouine'],
-        'Béja': ['Kasserine', 'Jendouba', 'Nabeul', 'Tunis'],
+        'Béja': ['Jendouba', 'Bizerte', 'Tunis'],
         'Kasserine': ['Sidi Bouzid', 'Kairouan', 'Gafsa', 'Béja'],
-        'Radès': ['Tunis', 'Sakiet ez Zit', 'La Marsa', 'Ben Arous'],
+        'Radès': ['Tunis', 'La Marsa', 'Ben Arous'],
         'Hammamet': ['Tunis', 'Sousse', 'Nabeul', 'Kairouan'],
         'Tataouine': ['Gabès', 'Medenine', 'Zarzis', 'Matmata'],
         'Monastir': ['Sousse', 'Mahdia', 'Msaken', 'Kairouan'],
@@ -143,8 +145,8 @@ def main():
         'Sakiet ez Zit': ['Radès', 'Sousse', 'Hammamet', 'La Marsa'],
         'Zarzis': ['Gabès', 'Medenine', 'Tataouine', 'Midoun'],
         'Ben Gardane': ['Zarzis', 'Medenine', 'Tataouine', 'Matmata'],
-        'Mahdia': ['Sousse', 'Monastir', 'Msaken', 'Gabès'],
-        'Houmt Souk': ['Midoun', 'Zarzis', 'Tataouine', 'Matmata'],
+        'Mahdia': ['Sousse', 'Monastir', 'Msaken', 'Sfax'],
+        'Houmt Souk': ['Midoun', 'Zarzis', 'Medenine', 'Menzel Bourguiba'],
         'Fouchana': ['Tunis', 'Ben Arous', 'Radès', 'La Marsa'],
         'Le Kram': ['Tunis', 'La Marsa', 'Ariana', 'Radès'],
         'El Kef': ['Tunis', 'Kasserine', 'Gafsa', 'Béja'],
@@ -154,11 +156,12 @@ def main():
         'Djemmal': ['Sousse', 'Monastir', 'Mahdia', 'Msaken'],
         'Korba': ['Nabeul', 'Menzel Temime', 'Hammamet', 'Zarzis'],
         'Menzel Temime': ['Nabeul', 'Korba', 'Monastir', 'Sousse'],
-        'Ghardimaou': ['Jendouba', 'El Kef', 'Béja', 'Kasserine'],
+        'Ghardimaou': ['Jendouba', 'El Kef', 'Béja'],
         'Midoun': ['Houmt Souk', 'Zarzis', 'Medenine', 'Menzel Bourguiba'],
         'Menzel Bourguiba': ['Béja', 'Menzel Temime', 'Midoun', 'Ghardimaou'],
         'Manouba': ['Tunis', 'Ariana', 'Le Bardo', 'Kairouan']
     }
+
 
 
      # Build the graph based on connections
