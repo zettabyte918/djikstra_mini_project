@@ -1,0 +1,24 @@
+{
+  "locations": {
+    "Tunis": {"latitude": 36.8065, "longitude": 10.1815},
+    "Sousse": {"latitude": 35.8256, "longitude": 10.6084},
+    "Gafsa": {"latitude": 33.8869, "longitude": 9.5375},
+    "Sfax": {"latitude": 34.7406, "longitude": 10.7603},
+    "Gabes": {"latitude": 33.8815, "longitude": 10.0982},
+    "Kairouan": {"latitude": 35.6781, "longitude": 10.0963},
+    "Tozeur": {"latitude": 33.9197, "longitude": 8.1335},
+    "Bizerte": {"latitude": 37.2746, "longitude": 9.8739},
+    "Monastir": {"latitude": 35.7771, "longitude": 10.8262}
+  },
+  "connections": {
+    "Tunis": ["Bizerte", "Sousse"],
+    "Bizerte": ["Tunis"],
+    "Sousse": ["Tunis", "Kairouan", "Sfax", "Monastir"],
+    "Kairouan": ["Sousse", "Sfax", "Gafsa"],
+    "Sfax": ["Sousse", "Kairouan", "Gabes"],
+    "Gabes": ["Sfax", "Gafsa", "Tozeur"],
+    "Gafsa": ["Kairouan", "Gabes", "Tozeur"],
+    "Tozeur": ["Gabes", "Gafsa"],
+    "Monastir": ["Sousse"]
+  }
+}
