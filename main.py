@@ -3,9 +3,10 @@ import folium
 from geopy.distance import geodesic
 import webbrowser
 import os
-
 from locations import locations
 from connections import connections
+
+# $ C:/Python312/python.exe "c:/Users/hosse/Desktop/DSIR12/Prog python/djikstra_mini_project/main.py"
 
 def build_graph(locations, connections):
     """Build a graph using only defined connections."""
